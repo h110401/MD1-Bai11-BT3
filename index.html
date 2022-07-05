@@ -79,10 +79,24 @@
 
     let table = [];
 
+    let choose = true;
+
     let rePlay = document.getElementById('replay');
 
-
     newTable();
+
+    while (choose) {
+        let temp = prompt('Chọn người đi trước (X/O):').toLowerCase()
+        if (temp == 'x') {
+            turn = false;
+            choose = false;
+        } else if (temp == 'o') {
+            turn = true;
+            choose = false;
+        } else {
+            alert('Nhập sai!');
+        }
+    }
 
     document.addEventListener('click', change)
 
