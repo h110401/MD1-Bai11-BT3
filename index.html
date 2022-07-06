@@ -107,10 +107,12 @@
             if (turn) {
                 event.srcElement.innerText = 'x';
                 table[event.srcElement.id] = 'x';
+                console.log(table)
 
             } else {
                 event.srcElement.innerText = 'o';
                 table[event.srcElement.id] = 'o';
+                console.log(table)
             }
             event.srcElement.disabled = true;
             check();
@@ -119,12 +121,15 @@
 
 
     function check() {
+        let win = false;
         if (table[0] !== 'empty' && table[0] == table[1] && table[1] == table[2]) {
             document.getElementById('0').style.boxShadow = 'blue 1px 1px 6px';
             document.getElementById('1').style.boxShadow = 'blue 1px 1px 6px';
             document.getElementById('2').style.boxShadow = 'blue 1px 1px 6px';
             turnOff();
             rePlay.hidden = false;
+            win = true;
+            console.log('if1', win);
         }
         if (table[3] !== 'empty' && table[3] == table[4] && table[4] == table[5]) {
             document.getElementById('3').style.boxShadow = 'blue 1px 1px 6px';
@@ -132,6 +137,10 @@
             document.getElementById('5').style.boxShadow = 'blue 1px 1px 6px';
             turnOff();
             rePlay.hidden = false;
+            win = true;
+            console.log('if2', win);
+
+
         }
         if (table[6] !== 'empty' && table[6] == table[7] && table[7] == table[8]) {
             document.getElementById('6').style.boxShadow = 'blue 1px 1px 6px';
@@ -139,6 +148,10 @@
             document.getElementById('8').style.boxShadow = 'blue 1px 1px 6px';
             turnOff();
             rePlay.hidden = false;
+            win = true;
+            console.log('if3', win);
+
+
         }
         if (table[0] !== 'empty' && table[0] == table[3] && table[3] == table[6]) {
             document.getElementById('0').style.boxShadow = 'blue 1px 1px 6px';
@@ -146,6 +159,10 @@
             document.getElementById('6').style.boxShadow = 'blue 1px 1px 6px';
             turnOff();
             rePlay.hidden = false;
+            win = true;
+            console.log('if4', win);
+
+
         }
         if (table[1] !== 'empty' && table[1] == table[4] && table[4] == table[7]) {
             document.getElementById('1').style.boxShadow = 'blue 1px 1px 6px';
@@ -153,6 +170,10 @@
             document.getElementById('7').style.boxShadow = 'blue 1px 1px 6px';
             turnOff();
             rePlay.hidden = false;
+            win = true;
+            console.log('if5', win);
+
+
         }
         if (table[2] !== 'empty' && table[2] == table[5] && table[5] == table[8]) {
             document.getElementById('2').style.boxShadow = 'blue 1px 1px 6px';
@@ -160,6 +181,10 @@
             document.getElementById('8').style.boxShadow = 'blue 1px 1px 6px';
             turnOff();
             rePlay.hidden = false;
+            win = true;
+            console.log('if6', win);
+
+
         }
         if (table[0] !== 'empty' && table[0] == table[4] && table[4] == table[8]) {
             document.getElementById('0').style.boxShadow = 'blue 1px 1px 6px';
@@ -167,6 +192,10 @@
             document.getElementById('8').style.boxShadow = 'blue 1px 1px 6px';
             turnOff();
             rePlay.hidden = false;
+            win = true;
+            console.log('if7', win);
+
+
         }
         if (table[2] !== 'empty' && table[2] == table[4] && table[4] == table[6]) {
             document.getElementById('2').style.boxShadow = 'blue 1px 1px 6px';
@@ -174,11 +203,17 @@
             document.getElementById('6').style.boxShadow = 'blue 1px 1px 6px';
             turnOff();
             rePlay.hidden = false;
+            win = true;
+            console.log('if8', win);
+
         }
         if (table.indexOf('empty') === -1) {
-            rePlay.hidden = false;
-            for (let i = 0; i < 9; i++) {
-                document.getElementById('' + i).style.boxShadow = 'red 1px 1px 6px';
+            console.log(win)
+            if(!win){
+                rePlay.hidden = false;
+                for (let i = 0; i < 9; i++) {
+                    document.getElementById('' + i).style.boxShadow = 'red 1px 1px 6px';
+                }
             }
         }
 
@@ -186,7 +221,7 @@
 
     function turnOff() {
         for (let i = 0; i < 9; i++) {
-            document.getElementById('' + i).disabled = true
+            document.getElementById('' + i).disabled = true;
         }
     }
 
